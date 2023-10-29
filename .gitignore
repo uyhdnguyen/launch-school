@@ -1,4 +1,6 @@
 #Ignore all SQLite databases
-
 db/*.sqlite3
+#Ignore c9 folder
 .c9/
+#Ignore test file
+test.rb
