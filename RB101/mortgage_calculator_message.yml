@@ -1,0 +1,16 @@
+welcome_message: "Welcome to Mortgage Calculator! Enter your name:"
+dash:            "------------------------------------------------"
+valid_name_message: "Make sure to enter a valid name."
+hello_message: "Hello "
+
+loan_amount_message: "Please enter your loan amount:"
+apr_rate_message: "Please enter the Annual Percentage Rate(APR) in percentage:" 
+loan_duration_message: "Please enter the loan duration in years:"
+
+valid_number_message: "Please enter valid numbers."
+
+monthly_payment_message: "Your monthly payment is: "
+
+another_calculation_message: "Would you like to perform another calculation?"
+
+thank_you_message: "Thank you for using the Mortgage Calculator \n Good bye!"
