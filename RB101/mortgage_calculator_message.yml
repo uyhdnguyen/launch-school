@@ -9,7 +9,7 @@ loan_duration_message: "Please enter the loan duration in years:"
 
 valid_number_message: "Please enter valid numbers."
 
-monthly_payment_message: "Your monthly payment is: "
+monthly_payment_message: "Your monthly payment is: $"
 
 another_calculation_message: "Would you like to perform another calculation?"
 
