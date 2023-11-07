@@ -12,3 +12,4 @@ happen in the following scenarios:
 > - `!=` means "not equals"
 > - `!!<objects>` turns object into their boolean equivalent
 > - `!<some_object>` turns object into the opposite of their boolean equivalent
+
