@@ -34,8 +34,21 @@ loop do
     prompt ("Choose one: #{VALID_CHOICES.join(', ')}")
     choice = gets.chomp
     
-    if VALID_CHOICES.include?(choice)
-        break
+    if choice.downcase.start_with?('r', 'p', 'sc', 'l', 'sp') || 
+      VALID_CHOICE.include?(choice)
+      case choice
+        when 'r'
+          choice = 'rock'
+        when 'p'
+          choice = 'paper'
+        when 'sc'
+          choice = 'scissor'
+        when 'l'
+          choice = 'lizard'
+        when 'sp'
+          choice = 'spock'
+      end
+      break
     else
         prompt("That's not a valid choice")
     end
