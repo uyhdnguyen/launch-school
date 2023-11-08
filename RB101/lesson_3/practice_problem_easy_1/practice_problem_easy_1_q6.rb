@@ -1,0 +1,11 @@
+# Starting with the string:
+
+famous_words = "seven years ago..."
+
+puts "Four score and " + famous_words
+
+puts famous_words.prepend("Four score and ")
+
+famous_words = "seven years ago..."
+
+puts "Four score and " << famous_words
