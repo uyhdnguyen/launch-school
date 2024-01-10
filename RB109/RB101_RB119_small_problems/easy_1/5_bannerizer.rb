@@ -6,8 +6,6 @@
 # | To boldly go where no one has gone before. |
 # |                                            |
 # +--------------------------------------------+
-HORIZONTAL_TEXT = "+--+"
-VERTICAL_TEXT = "|"
 
 # def print_in_box(text)
 #   border_line = "+" + "-" * (text.size + 2) + "+"
@@ -68,6 +66,9 @@ VERTICAL_TEXT = "|"
 
 =end
 
+HORIZONTAL_TEXT = "+--+"
+VERTICAL_TEXT = "|"
+
 LOREM_IPSUM = "Lorem Ipsum is simply dummy text of the printing and typesetting
 industry. Lorem Ipsum has been the industry's standard dummy text ever since
 the 1500s, when an unknown printer took a galley of type and scrambled it to
@@ -85,23 +86,8 @@ def print_in_box_3(text)
   cached_result = []
   cached_word_position = 0
 
-  temp = text.split(" ")
+  original_text = text.split(" ")
 
-  temp.each do |word|
-
-    if cached_result.join(" ").length < MAX_TEXT_LENGTH
-      cached_result.push(word)
-      cached_word_position = temp.rindex(word)
-    # elsif cached_result.join(" ").length >= MAX_TEXT_LENGTH
-    #   cached_result.each { |cached_word| result << cached_word }
-    #   cached_result = []
-    end
-
-  end
-
-  p cached_word_position
-  p cached_result
-  # p result
 end
 
 print_in_box_3(LOREM_IPSUM)
