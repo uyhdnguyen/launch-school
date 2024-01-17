@@ -21,6 +21,8 @@ puts b
 
 - This problem demonstrates local variable scope concept.
 
+> On line 1, local variable `a` is initialized and references the string object `Hello`. On line 2, local variable `b` is initialized and references the same object as `a`. On line 3, `a` is reassigned string object `Goodbye`.  On the last 2 lines, `puts` method is called and get passed `a` and `b` as arguments
+
 2.
 
 ```ruby
@@ -40,6 +42,8 @@ puts b
 - The outputs are `5` then `error` for unknown variable
 - On line 1, we initializes local variable called `a` to integer `4`. On line 3, we call method `loop` and pass it a `do..end` block as an argument. Inside of the block, we reassign local variable `a` to the integer `5`.  We then initializes new local variable called `b` to the integer `3`. We break out of the loop with the keyword `break`. We then call the `puts` method and pass it the value `5` that local variable `a` is referencing. Lastly, we call `puts` method and pass it the value that `b` is referencing but it would raise an error since variable `b` is scoped inside the `loop` method so we does not have access to local variable `b`
 - This problem demonstrates local variable scope concept.
+
+> On line 1, local variable `a` is initialized and references the integer object `4`. On line 3, `loop` method is called and gets passed a `do..end` block as an argument. Inside of the block, `a` is reassigned to `5`. On line 5, local variable `b` is initialized and references integer object `3`.
 
 3.
 
@@ -469,6 +473,8 @@ t = fix(s)
 
 The value that `a` is referencing is `HELLO!` and the value that `t` is referencing is `HELLO!`
 
+> On  line 6, local variable `s` is initialized and references  the string object `hello`. On line 7, local variable `t` is initialized and references the return value of calling `fix` method and pass it `s` as an argument, binding its value to the method's parameter `value`. Inside of the method, `value`is reassigned to the return value of calling `upcase!` method on `value` which mutates and returns the string `HELLO`. On line 3,  `concat` method is called on `value` and get passed the string `!` as an argument which also mutates `value` and returns `HELLO!`. Because this is the last line of the method, it implicitly returns the string `HELLO!`.
+
 5. What values do `s` and `t` have? Why?
 
 ```ruby
@@ -514,16 +520,21 @@ num = 3
 num = 2 * num
 ```
 
+> On line 1, local variable `num` is initialized and references the integer object `3`. On line 2, `num` is reassigned to the return value of calling `*` method on the integer `2` with `num` passed in as argument
+
 9.
 
 ```ruby
 def add_name(arr, name)
 arr = arr + [name]
 end
+
 names = ['bob', 'kim']
 add_name(names, 'jim')
 puts names
 ```
+
+> On line 5, local variable `names` is initialized and references the array object `['bob', 'kim']`. On line 6, `add_name` method is called and gets passed `names` and the string `jim` as arguments, binding `names`'s value to parameter `arr` and binding the string `jim` to parameter `name` of the method. Inside the method, `arr` is reassigned to the return value of calling `+` method on `arr` and gets passed `[name]` as an argument which does not mutate the original array `['bob', 'kim']` return `['bob', 'kim', 'jim']`. Because this is the last line of the method, `['bob', 'kim', 'jim']` is the return value of the method. On the last line, `names` is passed as an argument to the `puts` method invocation which outputs `'bob'`, `'kim'`  to the console
 
 10.
 
@@ -536,6 +547,7 @@ add_name(names, 'jim')
 puts names
 ```
 
+> On line 5, local variable `names` is initialized and references the array object `['bob', 'kim']`. On line 6, `add_name` method is called and gets passed `names` and the string `jim` as arguments, binding `names`'s value to parameter `arr` and binding the string `jim` to parameter `name` of the method. Inside the method, `arr` is reassigned to the return value of calling `<<` method on `arr` and gets passed `[name]` as an argument which  mutates the original array `['bob', 'kim']` return `['bob', 'kim', 'jim']`. Because this is the last line of the method, `['bob', 'kim', 'jim']` is the return value of the method. On the last line, `names` is passed as an argument to the `puts` method invocation which outputs `'bob'`, `'kim'` and `'jim`  to the console
 #### Each, Map, Select
 
 1.
@@ -547,12 +559,16 @@ array.select do |num|
 end
 ```
 
+> On line 1, local variable `array` is initialized and references the array object `[1,2,3,4,5]`. On line 2, `select` method is called on `array` and gets passed a `do..end` block which takes one parameter called `num`. Upon each iteration of `select` method, each element is bound to `num` which is  then checked by calling `odd?` method on `num` to see if it's an odd number. If it's evaluated as true, then `puts` method is called and gets passed `num` as an argument, outputting its value to the console.
+
 2.
 
 ```ruby
 arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 arr.select { |n| n.odd? }
 ```
+
+> On line 1, local variable `arr` is initialized and references the array object `[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]`. On line 2, `select` method is called on `arr` and gets passed `{}` block as an argument which also takes one parameter called `n`. Inside of the block, `n` represents each element of `arr`. Upon each iteration, `odd?` method is called on `n` which returns `true` or `false` when `n`'s value is an odd number or not. The return value of calling `select` method is `[1, 3, 5, 7, 9]`
 
 3.
 
@@ -563,6 +579,8 @@ new_array = arr.select do |n|
 end
 p new_array
 ```
+
+> On line 1, local variable `arr` is initialized and references the array `[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]`. On line 2, local variable `new_array` is initialized and references the return value of calling `select` method on `arr` with a `do..end` block, which takes one parameter called `n` , passed in as an argument. Inside of the block, `n` represents each element of `arr`. Upon each iteration, `+` method is called on `n` and gets passed integer object `1` as an argument returning the sum of `1` and each element of `arr`. Because each result is evaluated as true, `select` method returns a new array containing all of the original array's elements.
 
 4.
 
@@ -708,6 +726,7 @@ p odd
 p even
 ```
 
+> On line 1, `partition` method is called on array object `[1,2,3]` and gets passed `do..en` block which takes parameter `num`. Inside of the block, `odd?` method is called on `num` which evaluates to `true` if the checked element is an odd number and vice versa. Therefore, first array `[1,3]` is assigned to local variable `odd`'s initialization and second array `[2]` is assigned to local variable `even`'s initialization.
 #### Truthiness
 
 1.
@@ -720,6 +739,8 @@ else
 	puts "Hello is falsey"
 end
 ```
+
+> On line 1, local variable `a` is initialized and references the string object `Hello`. On line 2, an `if` statement is used which evaluates `a` as true. The string `Hello is truthy` is output
 
 2.
 
@@ -736,3 +757,6 @@ else
 	puts "interview"
 end
 ```
+
+> On line 5, `test` method is called which outputs `written assessment` to the console when the `puts` method is called and gets passed the string object `written assessment`. Because this is the last line of the method, `nil` is the return value which is assigned to local variable `var`'s initialization.  On line 8, `if` statement is used to evaluate truthiness of `var`. Since `var`'s value is `nil`, the `else` statement is used which enable the `puts` method is called and gets passed string object `interview` outputting its value to the console.
+
