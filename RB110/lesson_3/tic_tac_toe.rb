@@ -68,10 +68,9 @@ WINNER = 'W'
 LOSER = 'L'
 TIE = 'T'
 
-MESSAGES = YAML.load_file('tic_tac_toe_messages.yml')  
-
+MESSAGES = YAML.load_file('tic_tac_toe_messages.yml')
 def clear_screen
-  system('clear') || system('cls')
+  system('cls')
 end
 
 def prompt(message)
