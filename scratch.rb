@@ -1,58 +1,3 @@
-# Write a method robust_ssearch that takes two arguments: an array of words and a query term. The function should return an array of words from the given array that match the query term. The function should be case insensitive, it should consider partial matches, and to account for keyboard typo should consider the that last two letters of the query term may have been reversed.
-
-# Input: array, string
-# Output: an array with elements from the original array
-# Rules: return array of words from the input array that matches the input string
-# should be case insensitive and return even if the the element in the arrray doesn't contain all letters of the input string
-# still return input if the last two letters are reverse.
-
-# Data structure: array
-
-# # Algorithm:
-# --iterate through each element in the array 
-#   --store the element in a new array if all the characters in the string input are present in the element
-# --iterate through the new array by chars
-#   --return the element if each char is the same or if the last two elements are reversed
-
-# def robust_search(arr, str)
- 
-#   new_array = arr.select do |word|
-#      str.chars.all? do |char|
-#        word.include?(char)
-#      end
-#    end
- 
-#    new_array.map do |word|
-#      word.chars.map.with_index do |char, index|
-#        word[index] == char
-#      end
-#     end
-#  end
- 
-#  # Test Cases
-#  puts robust_search(["develop", "develpo", "deep", "dive", "devel"], "devel").inspect # => ["develop", "develpo", "devel"]
-#  puts robust_search(["apple", "banana", "cherry"], "naan").inspect # => ["banana"]
-#  puts robust_search(["testing", "switch", "characters"], "testnig").inspect # => []
-
-# def robust_search(words, query)
-#   return [] if query.length < 2
-#   normalized_query = query.downcase
-#   swapped_query = swap_last_two_chars(normalized_query)
-
-#   words.select do |word|
-#     normalized_word = word.downcase
-#     normalized_word.include?(normalized_query) || normalized_word.include?(swapped_query)
-#   end
-# end
-
-# def swap_last_two_chars(str)
-#   str[0...-2] + str[-1] + str[-2]
-# end
-
-# Test Cases
-# puts robust_search(["develop", "develpo", "deep", "dive", "devel"], "devel").inspect # => ["develop", "develpo", "devel"]
-# puts robust_search(["apple", "banana", "cherry"], "naan").inspect # => ["banana"]
-# puts robust_search(["testing", "switch", "characters"], "testnig").inspect # => []
 
 # # Write a function that calculates the sum of all numbers in a nested array. The array may contain integers, nested arrays of integers, or a mix of both. (for ruby and JS don’t use flatten) -- Alyssa
 
@@ -236,4 +181,5 @@ end
 # end
 
 # p bubble_sort([3,3,6,1,4,7,5])
+
 

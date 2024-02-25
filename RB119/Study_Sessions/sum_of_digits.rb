@@ -86,3 +86,12 @@ def digital_root(number)
 
   digital_root(sum_of_digits(numbers))
 end
+
+# second pass
+def digital_root(num)
+  return num if num.digits.size <= 1
+  
+  num = num.digits.reverse.sum
+
+  digital_root(num)
+end

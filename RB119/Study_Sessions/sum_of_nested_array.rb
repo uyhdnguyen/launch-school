@@ -45,28 +45,43 @@ end
 # - create a placeholder for total sum
 # - create a duplicate duplicated_array from given array
 # - remove the last_element from duplicated_array
-#   - check 
+#   - check
 #     if last_element is an integer, add it to the sum
 #     else concat the element back to duplicated_array
 # - repeat the whole process until the duplicated_array is empty?
 # - return the sum
 
-def sum_of_nested_array(array)
+# def sum_of_nested_array(array)
+#   sum = 0
+
+#   duplicated_array = array.clone
+
+#   until duplicated_array.empty?
+#     last_element = duplicated_array.pop
+
+#     if last_element.is_a?(Integer)
+#       sum += last_element
+#     else
+#       duplicated_array.concat(last_element)
+#     end
+#   end
+
+#   sum
+# end
+
+def sum_of_nested_array(arr)
   sum = 0
 
-  duplicated_array = array.clone
-
-  until duplicated_array.empty?
-    last_element = duplicated_array.pop
-
-    if last_element.is_a?(Integer)
-      sum += last_element
+    arr.each do |el|
+    if el.is_a?(Integer)
+      sum += el
     else
-      duplicated_array.concat(last_element)
+      sum += sum_of_nested_array(el)
     end
   end
 
   sum
+
 end
 
 p sum_of_nested_array([1, [2, 3], [4, [5, 6]]]) # 21
