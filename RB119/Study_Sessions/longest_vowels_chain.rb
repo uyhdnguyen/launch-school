@@ -1,76 +1,91 @@
 =begin
+The vowel substrings in the word codewarriors are o,e,a,io. The longest of these has a length of 2. Given a lowercase string that has alphabetic characters only (both vowels and consonants) and no spaces, return the length of the longest vowel substring. Vowels are any of aeiou.
+
+PROBLEM
+-------
+- input: string contains consonants and vowels
+- output: integer that represent the length of longest vowel substring
+
+- case insensitive
+- empty substring is ignored
+
+EXAMPLES
+--------
+codewarriors
+-> o e a io
+-> 2
+
+iiihoovaeaaaoougjyaw
+-> iii oo aeaaaoou a
+-> 8
+
+DATA STRUCTURES
+---------------
+- array contains all of the vowel substrings
+
 ALGORITHM
-=========
-- find all of the substring
-  - iterate through all characters of given string, starting from index 0
+---------
+- create vowels array of all of vowels
+  - `vowels`
+- create array contains all of the vowel substrings
+  - `vowel_substrings`
+- find all of the vowel substrings from given array
+  - create temp string
+    -`temp_string`
+  - iterate through all of the chars in given array index(0 -> last)
+    - if char is a vowel -> add it to `temp_string`
+    - else, return temp_string to `vowel_substrings`
+  - return the longest size for each substring in `vowel_substrings`
+    - map(&:size).max
 
-  - create length from 1 to length of given string
-
-  - reduce the size of the length
-
-  - return the vowel substrings array
-
-    - select all of the substrings that has vowels
-      any? / chars / `substr_arr`
-
-  - select the string that has longest vowels chain
-
-    - create an array for counts
-      - `count_arr`
-
-    - create a current count
-      `current_count`
-
-    - create a max count
-      `max_count`
-
-    - iterate through all substrings of `substr_arr`
-      - reset the count to 0
-
-    - iterate through each character of each substring
-      - if the character is vowel -> increase the current_count -> max_count = current_count
-
-      - else reset the current_count to 0
-
-    - push the max_count to the count_arr
-
-
+##### codewarriors
+       
 =end
 
-# def longest_vowels_chain(str)
-#   substr_arr = (0...str.size).each_with_object([]) do |idx, substr|
-#     (1..str.size - idx).each do |substr_length|
-#       substr << str[idx, substr_length] if str[idx, substr_length].chars.any?(/[aeiou]/)
+# def longest_vowel_chain(str)
+#   vowels = %w(a e i o u)
+
+#   vowel_substrings = []
+
+#   temp_string = ""
+
+#   str.each_char do |chr|
+#     if vowels.include?(chr)
+#       temp_string << chr
+#     else
+#       vowel_substrings << temp_string
+#       temp_string = ""
 #     end
 #   end
 
-#   substr_arr.each_with_object([]) do |sub, count_arr|
-#     max_count = 0
-#     current_count = 0
-#     # 'hellooip'
-
-#     sub.chars.each do |char|
-#       if %w(a e i o u).include?(char)
-#         current_count += 1
-#         max_count = current_count if current_count > max_count
-#       else
-#         current_count = 0
-#       end   
-#     end
-#     count_arr << max_count
-#   end.max
+#   vowel_substrings.map(&:size).max
 # end
 
-def longest_vowels_chain(str)
-  str.split(/[^aeiou]/).map(&:size).max
+
+# def longest_vowel_chain(str)
+#   vowels = %w(a e i o u)
+
+#   longest_count = 0
+#   current_count = 0
+#   temp_string = ""
+
+#   str.each_char do |chr|
+#     if vowels.include?(chr)
+#       current_count += 1
+#     else
+#       longest_count = current_count if longest_count < current_count
+#       current_count = 0  
+#     end
+#   end
+
+#   longest_count
+# end
+
+def longest_vowel_chain(str)
+  strings = str.split(/[^aeiou]/).reject{|sub| sub == "" }
+
+  strings.map(&:size).max
 end
 
-
-p longest_vowels_chain("codewarriors") == 2
-p longest_vowels_chain("suoidea")==3
-p longest_vowels_chain("iuuvgheaae")==4
-p longest_vowels_chain("ultrarevolutionariees")==3
-p longest_vowels_chain("strengthlessnesses")==1
-p longest_vowels_chain("cuboideonavicuare")==2
-p longest_vowels_chain("chrononhotonthuooaos")==5
-p longest_vowels_chain("iiihoovaeaaaoougjyaw")==8
+p longest_vowel_chain("codewarriors")
+p longest_vowel_chain("iiihoovaeaaaoougjyaw")
