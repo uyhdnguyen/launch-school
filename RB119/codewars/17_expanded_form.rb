@@ -85,9 +85,8 @@ ALGORITHM
 # end
 
 # def expanded_form(num)
-#   num.to_s
-#      .chars
-#      .reverse
+#   num.digits
+      .
 #      .map.with_index { |d, idx| d.to_i * 10**idx }
 #      .reject(&:zero?)
 #      .reverse
