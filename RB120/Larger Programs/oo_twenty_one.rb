@@ -204,7 +204,7 @@ class TwentyOne
   def display_welcome_message
     puts "Welcome #{player.name} to Twenty One!"
   end
- 
+  
   def deal_cards
     2.times do
       player.hand.add_card(deck.deal)
