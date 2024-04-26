@@ -1,15 +1,15 @@
 class CircularBuffer
     def initialize(max_size)
         @buffer = Array.new(max_size)
-        @next_position = 0
+        @current_position = 0
         @oldest_position = 0
     end
 
     def put(obj)
-        @oldest_position = increment(@next_position) unless @buffer[@next_position].nil?
+        @oldest_position = increment(@current_position) unless @buffer[@current_position].nil?
 
-        @buffer[@next_position] = obj
-        @next_position = increment(@next_position)
+        @buffer[@current_position] = obj
+        @current_position = increment(@current_position)
     end
 
     def get
