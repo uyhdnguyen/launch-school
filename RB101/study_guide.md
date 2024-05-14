@@ -739,6 +739,44 @@ else
 	puts "Hello is falsey"
 end
 ```
+## Specific Topics of Interest
+
+In general, you should be familiar with Ruby syntax and operators. You should also be able to clearly explain the topics shown below, talk about them, and write code snippets to illustrate the concepts.
+
+- numbers: integers and floats
+- strings
+- interpolation in strings
+- boolean vs. truthiness
+- `nil`
+- array and hash syntax
+- array properties and methods: `Array#size`, `Array#push`, `Array#pop`
+- operators
+    - numeric operators: `+`, `-`, `*`, `/`, `%`, `divmod`, `**`
+    - string operators: `+`, `*`
+    - conditional operators: `==`, `!=`, `<`, `>`, `<=`, `>=`, ternary
+    - logical operators and short-circuit evaluation: `!`, `&&`, `||`
+    - operator precedence
+- type conversion: `#to_s`, `#to_i`, `#to_f`, `#to_a`, `#to_h`
+- mutability, immutability, and constants
+- variables
+    - local variable and constant names
+    - initialization and reassignment
+    - variable scope and method definitions
+    - variable scope and blocks
+    - variables as pointers
+    - variable shadowing [[Variables Shadowing]]
+- conditionals and loops
+- `puts`
+- methods
+    - definition and invocation
+    - default parameters
+    - implicit vs. explicit return values
+    - parameters vs. arguments
+    - output vs. return values, side effects
+    - _pass-by-reference_ and _pass-by-value_
+    - the call stack
+- expressions and 
+
 
 > On line 1, local variable `a` is initialized and references the string object `Hello`. On line 2, an `if` statement is used which evaluates `a` as true. The string `Hello is truthy` is output
 
