@@ -2,5 +2,5 @@
 db/*.sqlite3
 #Ignore c9 folder
 .c9/
-#Ignore test file
-test.rb
+#Ignore DS_Store files
+.DS_Store
