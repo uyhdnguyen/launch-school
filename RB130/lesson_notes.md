@@ -6,7 +6,7 @@ Closure bind its surrounding artifacts and build an enclosure around them, that 
 
 In ruby, closure is implemented by
 
-- Instantiate an object from **Proc** class
+- ****Instantiate an object from **Proc** class
 - Using **blocks**
 - Using **lambdas** (IRRELEVANT SUBJECT)
 
@@ -122,4 +122,22 @@ SEAT is the way to write a test
 - Assert if the results are as expected
 - Tear down and clean up lingering artifacts as neeeded
 
-# Minitest Guide
+# Ruby Toolbox
+
+## Rubygems
+  Rubygems/ Gems
+
+## RVM and Rbenv
+  RVM/ Rbenv is a Ruby manager which lets you configure which Ruby version for your project
+
+## Bundler
+  Bundler/ Bundle is a gem which acts as dependency manager, that lets you configure which Ruby and which gems to use in your project.
+
+### Gemfile
+  Bundle relies on Gemfiles, uses DSL language, to tell which version of Ruby and its Gems to use via command `bundle install` to scan, download and install dependencies.
+  
+### Gemfile.lock
+  Gemfile.lock is a summary which is produced after Gemfiles is run, that shows all dependencies that includes Gems that are in Gemfiles as well as the Gems they depend on.
+
+## Rake
+Rake is a Gem that automates common functions required to build, test,package and install programs.

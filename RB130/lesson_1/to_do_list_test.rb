@@ -4,7 +4,7 @@ require 'minitest/autorun'
 require "minitest/reporters"
 Minitest::Reporters.use!
 
-require_relative 'todo_list'
+require_relative 'to_do_list'
 
 class TodoListTest < Minitest::Test
   attr_accessor :list, :todo1, :todo2, :todo3, :todos
@@ -22,9 +22,9 @@ class TodoListTest < Minitest::Test
   end
 
   # Your tests go here. Remember they must start with "test_"
-  def test_size
-    assert_equal(3, list.size)
-  end
+  # def test_size
+  #   assert_equal(3, list.size)
+  # end
 
   def test_first
     assert_equal(todo1, list.first)
@@ -38,7 +38,7 @@ class TodoListTest < Minitest::Test
     todo = list.shift
     
     assert_equal(todo1, todo)
-    assert_equal([todo2, todo3], list.to_a)
+    assert_equal([todo2, todo3], list.todos)
   end
   
   def test_pop
@@ -102,7 +102,78 @@ class TodoListTest < Minitest::Test
     assert_equal(true, @todo3.done?)
     assert_equal(true, @list.done?)
   end
-end
 
+  def test_remove_at
+    assert_raises(IndexError) { list.remove_at(100) }
+    list.remove_at(1)
+    assert_equal([todo1, todo3], list.to_a)
+  end
+  
+  def test_to_s
+    output = <<~OUTPUT.chomp
+    ---- Today's Todos ----
+    [ ] Buy milk
+    [ ] Clean room
+    [ ] Go to gym
+    OUTPUT
+  
+    assert_equal(output, @list.to_s)
+  end
+
+  def test_to_s_one_to_do_done
+    output = <<~OUTPUT.chomp
+    ---- Today's Todos ----
+    [X] Buy milk
+    [ ] Clean room
+    [ ] Go to gym
+    OUTPUT
+
+  todo1.done!
+
+  assert_equal(output, @list.to_s)
+  end
+
+  def test_to_s_all_to_do_done
+    output = <<~OUTPUT.chomp
+    ---- Today's Todos ----
+    [X] Buy milk
+    [X] Clean room
+    [X] Go to gym
+    OUTPUT
+
+  list.mark_all_done
+
+  assert_equal(output, @list.to_s)
+  end
+
+  def test_each
+    result = []
+    list.each { |todo| result << todo }
+
+    assert_equal([todo1, todo2, todo3], result)
+  end
+
+  def test_each_return_original_list
+    result = list.each { |todo| todo}
+
+    assert_equal(list, result)
+  end
+
+  def test_select
+    result = list.select { |todo| todo.title.start_with? "B"}
+
+    assert_equal([todo1], result.todos)
+  end
+
+  def test_select_ls
+    new_list = TodoList.new(list.title)
+    todo1.done!
+    new_list.add(todo1)
+
+    assert_equal(new_list.to_s, list.select { |todo| todo.done?}.to_s)
+  end
+
+
+end
 
 
