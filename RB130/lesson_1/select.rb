@@ -15,23 +15,22 @@
 # end
 
 def select(arr)
-  result = []
+	res = []
+	ctr = 0
+	
+	while ctr < arr.size
+		cur_ele = arr[ctr]
 
-  if block_given?
-    counter = 0
+		res << cur_ele if yield(cur_ele)
 
-    while counter < arr.size
-      current_element = arr[counter]
-      result << current_element if yield(current_element)
-      counter += 1
-    end
-  end
+		ctr += 1
+	end
 
-  result
+	res
 end
 
 array = [1, 2, 3, 4, 5]
 
-p select(array) { |num| num.odd? }
-p select(array) { |num| puts num }
-p select(array) { |num| num + 1 }
+p select(array) { |num| num.odd? }      # => [1, 3, 5]
+p select(array) { |num| puts num }      # => [], because "puts num" returns nil and evaluates to false
+p select(array) { |num| num + 1 }       # => [1, 2, 3, 4, 5], because "num + 1" evaluates to true
