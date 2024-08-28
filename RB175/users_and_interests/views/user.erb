@@ -1,0 +1,17 @@
+<h1><%= @name.capitalize %></h1>
+
+<h3>Email</h3>
+<body><%= @email %></body>
+
+<h3>Interest</h3>
+<body><%= @interests %></body>
+
+<h3>Links</h3>
+<% @users.each do |user| %>
+  <% next if params[:name] == user.to_s %>
+  <ul>
+    <li>
+      <a href="/<%= user %>"><%= user.capitalize %></a>
+    </li>
+  </ul>
+  <% end %>

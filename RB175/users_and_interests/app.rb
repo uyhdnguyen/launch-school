@@ -36,8 +36,52 @@ Algorithm:
 
 =end
 
+# {
+#   :jamy=>{:email=>"jamy.rustenburg@gmail.com", 
+#   :interests=>["woodworking", "cooking", "reading"]}, 
+  
+#   :nora=>{:email=>"nora.alnes@yahoo.com", 
+#   :interests=>["cycling", "basketball", "economics"]}, 
+  
+#   :hiroko=>{:email=>"hiroko.ohara@hotmail.com", 
+#   :interests=>["politics", "history", "birding"]}
+# }
+require "tilt/erubis"
+require "sinatra"
+require "sinatra/reloader"
 require 'yaml'
 
-users_info = YAML.load_file("users.yaml")
+# not_found do
+#   redirect "/"
+# end
 
-p users_info
+before do
+  @users_info = YAML.load_file("users.yaml")
+  @users = @users_info.keys
+end
+
+get "/" do
+  erb :home
+end
+
+get "/:name" do
+  @name = params[:name]
+
+  @email = @users_info[@name.to_sym][:email]
+  
+  @interests = @users_info[@name.to_sym][:interests].join ", "
+  
+  erb :user
+end
+
+helpers do
+  def count_interests
+    total_interests = 0
+
+    @users_info.each do |_, info|
+      total_interests += info[:interests].count
+    end
+
+    total_interests
+  end
+end
